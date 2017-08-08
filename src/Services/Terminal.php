@@ -16,7 +16,7 @@ class Terminal extends ConsoleApplication
     /**
      * Resolve an array of commands through the application.
      *
-     * @param  array|mixed  $commands
+     * @param array|mixed $commands
      *
      * @return $this|\Illuminate\Console\Application
      */
@@ -28,14 +28,15 @@ class Terminal extends ConsoleApplication
     /**
      * Run an Artisan console command by name.
      *
-     * @param  string  $command
-     * @param  array  $parameters
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $outputBuffer
+     * @param string                                            $command
+     * @param array                                             $parameters
+     * @param \Symfony\Component\Console\Output\OutputInterface $outputBuffer
+     *
      * @return int
      */
     public function call($command, array $parameters = [], $outputBuffer = null)
     {
-        $class = $outputBuffer ?: new BufferedOutput;
+        $class = $outputBuffer ?: new BufferedOutput();
 
         if ($this->ajax() === true) {
             $this->lastOutput = new $class(BufferedOutput::VERBOSITY_NORMAL, true, new OutputFormatter(true));
