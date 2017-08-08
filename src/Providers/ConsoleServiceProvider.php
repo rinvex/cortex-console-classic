@@ -63,19 +63,21 @@ class ConsoleServiceProvider extends ServiceProvider
             return $artisan;
         });
 
-        $commands = [
-            Find::class,
-            Artisan::class,
-            ArtisanTinker::class,
-            Composer::class,
-            Mysql::class,
-            Tail::class,
-            Vi::class,
-        ];
+        if (! $this->app->runningInConsole()) {
+            $commands = [
+                Find::class,
+                Artisan::class,
+                ArtisanTinker::class,
+                Composer::class,
+                Mysql::class,
+                Tail::class,
+                Vi::class,
+            ];
 
-        Terminal::starting(function ($artisan) use ($commands) {
-            $artisan->resolveCommands($commands);
-        });
+            Terminal::starting(function ($artisan) use ($commands) {
+                $artisan->resolveCommands($commands);
+            });
+        }
     }
 
     /**
