@@ -80,4 +80,3 @@ class RoutesDataTable extends AbstractDataTable
         ];
     }
 }
-
