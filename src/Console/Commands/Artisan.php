@@ -59,7 +59,7 @@ class Artisan extends Command
      *
      * @throws \InvalidArgumentException
      */
-    public function fire()
+    public function handle()
     {
         $command = $this->forceCommand($this->option('command'));
 

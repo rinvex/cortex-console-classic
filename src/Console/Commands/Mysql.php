@@ -46,7 +46,7 @@ class Mysql extends Command
     /**
      * fire.
      */
-    public function fire()
+    public function handle()
     {
         $query = $this->option('command');
         $connection = $this->databaseManager->connection();
