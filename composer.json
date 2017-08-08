@@ -1,0 +1,85 @@
+{
+    "name": "cortex/console",
+    "type": "cortex-module",
+    "description": "Cortex Console is a set of powerful tools for administrators and system support staff, to maintain the project through a web console.",
+    "keywords": [
+        "cortex",
+        "console",
+        "maintenance",
+        "administration",
+        "laravel",
+        "system",
+        "rinvex"
+    ],
+    "license": "MIT",
+    "homepage": "https://rinvex.com",
+    "support": {
+        "email": "help@rinvex.com",
+        "issues": "https://github.com/rinvex/cortex-console/issues",
+        "source": "https://github.com/rinvex/cortex-console",
+        "docs": "https://github.com/rinvex/cortex-console/README.md"
+    },
+    "authors": [
+        {
+            "name": "Rinvex LLC",
+            "homepage": "https://rinvex.com",
+            "email": "help@rinvex.com"
+        },
+        {
+            "name": "Abdelrahman Omran",
+            "homepage": "https://omranic.com",
+            "email": "me@omranic.com",
+            "role": "Project Lead"
+        },
+        {
+            "name": "The Generous Laravel Community",
+            "homepage": "https://github.com/rinvex/cortex-console/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.0.0",
+        "composer/composer": "^1.4",
+        "illuminate/http": "~5.5.0",
+        "illuminate/support": "~5.5.0",
+        "illuminate/console": "~5.5.0",
+        "illuminate/database": "~5.5.0",
+        "illuminate/filesystem": "~5.5.0",
+        "symfony/console": "~2.8|~3.0",
+        "laravel/framework": "~5.5.0",
+        "cortex/foundation": "dev-develop",
+        "rinvex/composable": "dev-develop"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cortex\\Console\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Cortex\\Console\\Providers\\ConsoleServiceProvider"
+            ]
+        },
+        "cortex-module": {
+            "autoinstall": false,
+            "icon": {
+                "color": "#2196f3",
+                "name": "heartbeat",
+                "background-size": "cover",
+                "background-color": "#e3f2fd",
+                "background-position": "center",
+                "background-repeat": "no-repeat"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

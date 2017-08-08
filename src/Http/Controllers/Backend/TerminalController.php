@@ -1,0 +1,78 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Cortex\Console\Http\Controllers\Backend;
+
+use Illuminate\Http\Request;
+use Cortex\Console\Services\Terminal;
+
+class TerminalController extends ConsoleController
+{
+    /**
+     * {@inheritdoc}
+     */
+    protected $resource = 'terminal';
+
+    /**
+     * Show the form for create/update of the given resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function form(Terminal $terminal, Request $request)
+    {
+        $token = null;
+        if ($request->hasSession() === true) {
+            $token = $request->session()->token();
+        }
+        //dd($terminal->all());
+        $terminal->call('list --ansi');
+        $options = json_encode([
+            'username' => 'LARAVEL',
+            'hostname' => php_uname('n'),
+            'os' => PHP_OS,
+            'csrfToken' => $token,
+            'helpInfo' => $terminal->output(),
+            'basePath' => app()->basePath(),
+            'environment' => app()->environment(),
+            'version' => app()->version(),
+            'endpoint' => route('backend.console.terminal.execute'),
+            'interpreters' => [
+                'mysql' => 'mysql',
+                'artisan tinker' => 'tinker',
+                'tinker' => 'tinker',
+            ],
+            'confirmToProceed' => [
+                'artisan' => [
+                    'migrate',
+                    'migrate:install',
+                    'migrate:refresh',
+                    'migrate:reset',
+                    'migrate:rollback',
+                    'db:seed',
+                ],
+            ]
+        ]);
+
+        return view('cortex/console::backend.forms.terminal', compact('options'));
+    }
+
+    /**
+     * Process the form for store/update of the given resource.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function execute(Terminal $terminal, Request $request)
+    {
+        $error = $terminal->call($request->get('command'));
+
+        return response()->json([
+            'jsonrpc' => $request->get('jsonrpc'),
+            'id' => $request->get('id'),
+            'result' => $terminal->output(),
+            'error' => $error,
+        ]);
+    }
+}
