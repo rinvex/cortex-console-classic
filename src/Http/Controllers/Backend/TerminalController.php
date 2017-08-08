@@ -51,7 +51,7 @@ class TerminalController extends ConsoleController
                     'migrate:rollback',
                     'db:seed',
                 ],
-            ]
+            ],
         ]);
 
         return view('cortex/console::backend.forms.terminal', compact('options'));

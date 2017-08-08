@@ -60,12 +60,13 @@ class ArtisanTinker extends Command
      * executeCode.
      *
      * @param string $code
+     *
      * @return string
      */
     protected function executeCode($code)
     {
         $result = null;
-        if (strpos($code, 'echo') === false && strpos($code, 'var_dump') === false) {
+        if (mb_strpos($code, 'echo') === false && mb_strpos($code, 'var_dump') === false) {
             $code = 'return '.$code;
         }
 

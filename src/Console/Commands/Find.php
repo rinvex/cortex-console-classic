@@ -63,6 +63,7 @@ class Find extends Command
      *
      * @param \Symfony\Component\Console\Input\InputInterface   $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
      * @return int
      */
     public function run(InputInterface $input, OutputInterface $output)
@@ -108,7 +109,7 @@ class Find extends Command
         }
 
         if (is_null($maxDepth) === false) {
-            if ($maxDepth == '0') {
+            if ($maxDepth === '0') {
                 $this->line($path);
 
                 return;

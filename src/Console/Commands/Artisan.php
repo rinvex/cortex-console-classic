@@ -78,6 +78,7 @@ class Artisan extends Command
      * need focre option.
      *
      * @param string $command
+     *
      * @return string
      */
     protected function forceCommand($command)
@@ -85,7 +86,7 @@ class Artisan extends Command
         return (
             starts_with($command, 'migrate') === true && starts_with($command, 'migrate:status') === false ||
             starts_with($command, 'db:seed') === true
-        ) && strpos('command', '--force') === false ?
+        ) && mb_strpos('command', '--force') === false ?
             $command .= ' --force' : $command;
     }
 

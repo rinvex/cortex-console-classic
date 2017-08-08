@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Cortex\Console\Providers;
 
-use Cortex\Console\Console\Commands\Artisan;
-use Cortex\Console\Console\Commands\ArtisanTinker;
-use Cortex\Console\Console\Commands\Composer;
-use Cortex\Console\Console\Commands\Find;
-use Cortex\Console\Console\Commands\Mysql;
-use Cortex\Console\Console\Commands\Tail;
-use Cortex\Console\Console\Commands\Vi;
 use Cortex\Console\Services\Terminal;
+use Cortex\Console\Console\Commands\Vi;
 use Illuminate\Support\ServiceProvider;
+use Cortex\Console\Console\Commands\Find;
+use Cortex\Console\Console\Commands\Tail;
+use Cortex\Console\Console\Commands\Mysql;
+use Cortex\Console\Console\Commands\Artisan;
+use Cortex\Console\Console\Commands\Composer;
+use Cortex\Console\Console\Commands\ArtisanTinker;
 
 class ConsoleServiceProvider extends ServiceProvider
 {
@@ -77,7 +77,6 @@ class ConsoleServiceProvider extends ServiceProvider
             $artisan->resolveCommands($commands);
         });
     }
-
 
     /**
      * Publish resources.
