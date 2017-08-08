@@ -7,8 +7,8 @@
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/console.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/console/)
 [![Code Climate](https://img.shields.io/codeclimate/github/cortex/console.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/console)
 [![Travis](https://img.shields.io/travis/cortex/console.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/console)
-[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/746e5965-90c3-4eec-aa57-c340f79bc78f.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/746e5965-90c3-4eec-aa57-c340f79bc78f)
-[![StyleCI](https://styleci.io/repos/93621137/shield)](https://styleci.io/repos/93621137)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/e12fb167-8e1d-4e99-8881-3a85d92d8bd9.svg?label=SensioLabs&style=flat-square)](https://insight.sensiolabs.com/projects/e12fb167-8e1d-4e99-8881-3a85d92d8bd9)
+[![StyleCI](https://styleci.io/repos/99706187/shield)](https://styleci.io/repos/99706187)
 [![License](https://img.shields.io/packagist/l/cortex/console.svg?label=License&style=flat-square)](https://github.com/cortex/console/blob/develop/LICENSE)
 
 
