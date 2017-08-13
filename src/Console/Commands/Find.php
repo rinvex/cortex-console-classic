@@ -128,6 +128,7 @@ class Find extends Command
             $realPath = $file->getRealpath();
             if ($delete === true && $this->files->exists($realPath) === true) {
                 $removed = false;
+
                 try {
                     if ($this->files->isDirectory($realPath) === true) {
                         $removed = $this->files->deleteDirectory($realPath);
