@@ -11,9 +11,8 @@ Route::group(['domain' => domain()], function () {
 
         // Categories Routes
         Route::name('console.')->prefix('console')->group(function () {
-            Route::get('/')->name('index')->uses('ConsoleController@index');
-            Route::get('routes')->name('routes.index')->uses('ConsoleController@routes');
-            Route::get('terminal')->name('terminal.form')->uses('TerminalController@form');
+            Route::get('routes')->name('routes.index')->uses('RoutesController@index');
+            Route::get('terminal')->name('terminal.index')->uses('TerminalController@index');
             Route::post('terminal')->name('terminal.execute')->uses('TerminalController@execute');
         });
 

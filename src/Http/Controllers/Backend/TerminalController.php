@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace Cortex\Console\Http\Controllers\Backend;
 
+use Exception;
 use Illuminate\Http\Request;
 use Cortex\Console\Services\Terminal;
+use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
-class TerminalController extends ConsoleController
+class TerminalController extends AuthorizedController
 {
     /**
      * {@inheritdoc}
@@ -15,11 +17,19 @@ class TerminalController extends ConsoleController
     protected $resource = 'terminal';
 
     /**
+     * {@inheritdoc}
+     */
+    protected $resourceAbilityMap = [
+        'index' => 'run',
+        'execute' => 'run',
+    ];
+
+    /**
      * Show the form for create/update of the given resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function form(Terminal $terminal, Request $request)
+    public function index(Terminal $terminal, Request $request)
     {
         $token = null;
         if ($request->hasSession() === true) {
@@ -64,7 +74,7 @@ class TerminalController extends ConsoleController
      *
      * @return \Illuminate\Http\Response
      */
-    protected function execute(Terminal $terminal, Request $request)
+    public function execute(Terminal $terminal, Request $request)
     {
         $error = $terminal->call($request->get('command'));
 
@@ -74,5 +84,17 @@ class TerminalController extends ConsoleController
             'result' => $terminal->output(),
             'error' => $error,
         ]);
+    }
+
+    /**
+     * Render exception.
+     *
+     * @param \Exception $exception
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function renderException(Exception $exception)
+    {
+        return view('cortex/console::backend.forms.error', ['message' => $exception->getMessage()]);
     }
 }
