@@ -1,0 +1,14 @@
+[
+    {
+        "action": "run",
+        "resource": "terminal",
+        "policy": "Cortex\\Console\\Policies\\ConsolePolicy@runTerminal",
+        "name": "Can run web terminal."
+    },
+    {
+        "action": "list",
+        "resource": "routes",
+        "policy": "Cortex\\Console\\Policies\\ConsolePolicy@listRoutes",
+        "name": "Can list routes."
+    }
+]
