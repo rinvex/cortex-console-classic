@@ -30,19 +30,6 @@ class ConsoleServiceProvider extends ServiceProvider
 
         // Publish Resources
         ! $this->app->runningInConsole() || $this->publishResources();
-
-        // Register sidebar menus
-        $this->app->singleton('menus.sidebar.console', function ($app) {
-            return collect();
-        });
-
-        // Register menu items
-        $this->app['view']->composer('cortex/foundation::backend.partials.sidebar', function ($view) {
-            app('menus.sidebar')->put('console', app('menus.sidebar.console'));
-            app('menus.sidebar.console')->put('header', '<li class="header">'.trans('cortex/console::navigation.headers.console').'</li>');
-            app('menus.sidebar.console')->put('routes', '<li '.(mb_strpos(request()->route()->getName(), 'backend.routes.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.console.routes.index').'"><i class="fa fa-globe"></i> <span>'.trans('cortex/console::navigation.menus.routes').'</span></a></li>');
-            app('menus.sidebar.console')->put('terminal', '<li '.(mb_strpos(request()->route()->getName(), 'backend.terminal.') === 0 ? 'class="active"' : '').'><a href="'.route('backend.console.terminal.form').'"><i class="fa fa-terminal"></i> <span>'.trans('cortex/console::navigation.menus.terminal').'</span></a></li>');
-        });
     }
 
     /**
