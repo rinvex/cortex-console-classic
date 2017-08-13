@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Attributable\Policies;
+namespace Cortex\Console\Policies;
 
 use Cortex\Fort\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
