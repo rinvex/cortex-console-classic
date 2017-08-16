@@ -32,10 +32,11 @@ class TerminalController extends AuthorizedController
     public function index(Terminal $terminal, Request $request)
     {
         $token = null;
+
         if ($request->hasSession() === true) {
             $token = $request->session()->token();
         }
-        //dd($terminal->all());
+
         $terminal->call('list --ansi');
         $options = json_encode([
             'username' => 'LARAVEL',

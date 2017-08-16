@@ -13,13 +13,6 @@ use Illuminate\Contracts\Console\Kernel as ArtisanContract;
 class Artisan extends Command
 {
     /**
-     * The console command web flag.
-     *
-     * @var bool
-     */
-    protected $webConsole = true;
-
-    /**
      * The console command name.
      *
      * @var string
@@ -31,7 +24,7 @@ class Artisan extends Command
      *
      * @var string
      */
-    protected $description = 'laravel artisan';
+    protected $description = 'Laravel Artisan';
 
     /**
      * no support array.
@@ -58,6 +51,7 @@ class Artisan extends Command
     public function __construct(ArtisanContract $artisan)
     {
         parent::__construct();
+
         $this->artisan = $artisan;
     }
 

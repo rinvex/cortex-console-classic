@@ -38,7 +38,7 @@ class Terminal extends ConsoleApplication
     {
         $class = $outputBuffer ?: new BufferedOutput();
 
-        if ($this->ajax() === true) {
+        if ($this->request()->ajax() === true) {
             $this->lastOutput = new $class(BufferedOutput::VERBOSITY_NORMAL, true, new OutputFormatter(true));
             $this->setCatchExceptions(true);
         } else {
@@ -59,14 +59,12 @@ class Terminal extends ConsoleApplication
     }
 
     /**
-     * ajax.
+     * Request.
      *
-     * @return bool
+     * @return \Illuminate\Http\Request
      */
-    private function ajax()
+    protected function request()
     {
-        $request = $this->laravel['request'] ?: Request::capture();
-
-        return $request->ajax();
+        return $this->laravel['request'] ?: Request::capture();
     }
 }

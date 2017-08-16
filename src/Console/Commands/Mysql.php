@@ -12,13 +12,6 @@ use Symfony\Component\Console\Input\InputOption;
 class Mysql extends Command
 {
     /**
-     * The console command web flag.
-     *
-     * @var bool
-     */
-    protected $webConsole = true;
-
-    /**
      * The console command name.
      *
      * @var string
