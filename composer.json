@@ -50,6 +50,7 @@
         "laravelcollective/html": "^5.4.0",
         "proengsoft/laravel-jsvalidation": "dev-master",
         "rinvex/composable": "dev-develop",
+        "rinvex/fort": "dev-develop",
         "symfony/console": "~2.8|~3.0"
     },
     "autoload": {

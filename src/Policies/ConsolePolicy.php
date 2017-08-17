@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Console\Policies;
 
-use Cortex\Fort\Models\User;
+use Rinvex\Fort\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ConsolePolicy
@@ -15,7 +15,7 @@ class ConsolePolicy
      * Determine whether the user can run web terminal.
      *
      * @param string                   $ability
-     * @param \Cortex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
      */
@@ -28,7 +28,7 @@ class ConsolePolicy
      * Determine whether the user can list routes.
      *
      * @param string                   $ability
-     * @param \Cortex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Models\User $user
      *
      * @return bool
      */
