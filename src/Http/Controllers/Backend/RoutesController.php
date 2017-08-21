@@ -30,6 +30,6 @@ class RoutesController extends AuthorizedController
             'id' => 'cortex-console-routes',
             'middlewareClosure' => $middlewareClosure,
             'phrase' => trans('cortex/console::common.routes'),
-        ])->render('cortex/foundation::backend.partials.datatable');
+        ])->render('cortex/foundation::backend.pages.datatable');
     }
 }
