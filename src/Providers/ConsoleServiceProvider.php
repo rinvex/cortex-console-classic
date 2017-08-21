@@ -17,24 +17,10 @@ use Cortex\Console\Console\Commands\ArtisanTinker;
 class ConsoleServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * The commands to be registered.
      *
-     * @return void
+     * @var array
      */
-    public function boot()
-    {
-        // Load resources
-        require __DIR__.'/../../routes/breadcrumbs.php';
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/console');
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/console');
-        $this->app->afterResolving('blade.compiler', function () {
-            require __DIR__.'/../../routes/menus.php';
-        });
-
-        // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishResources();
-    }
 
     /**
      * Register any application services.
@@ -47,6 +33,9 @@ class ConsoleServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Register console commands
+        ! $this->app->runningInConsole() || $this->registerCommands();
+
         $this->app->singleton(Terminal::class, function ($app) {
             $_SERVER['PHP_SELF'] = 'artisan'; // Fix (index.php => artisan)
             $artisan = new Terminal($app, $app['events'], $app->version());
@@ -72,13 +61,50 @@ class ConsoleServiceProvider extends ServiceProvider
     }
 
     /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // Load resources
+        require __DIR__.'/../../routes/breadcrumbs.php';
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/console');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/console');
+        $this->app->afterResolving('blade.compiler', function () {
+            require __DIR__.'/../../routes/menus.php';
+        });
+
+        // Publish Resources
+        ! $this->app->runningInConsole() || $this->publishResources();
+    }
+
+    /**
      * Publish resources.
      *
      * @return void
      */
     protected function publishResources()
     {
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/console')], 'lang');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/console')], 'views');
+        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/console')], 'cortex-console-lang');
+        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/console')], 'cortex-console-views');
+    }
+
+    /**
+     * Register console commands.
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
+        // Register artisan commands
+        foreach ($this->commands as $key => $value) {
+            $this->app->singleton($value, function ($app) use ($key) {
+                return new $key();
+            });
+        }
+
+        $this->commands(array_values($this->commands));
     }
 }
