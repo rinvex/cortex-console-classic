@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Console\Policies;
 
-use Rinvex\Fort\Models\User;
+use Rinvex\Fort\Contracts\UserContract;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ConsolePolicy
@@ -15,11 +15,11 @@ class ConsolePolicy
      * Determine whether the user can run web terminal.
      *
      * @param string                   $ability
-     * @param \Rinvex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
      */
-    public function runTerminal($ability, User $user)
+    public function runTerminal($ability, UserContract $user)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -28,11 +28,11 @@ class ConsolePolicy
      * Determine whether the user can list routes.
      *
      * @param string                   $ability
-     * @param \Rinvex\Fort\Models\User $user
+     * @param \Rinvex\Fort\Contracts\UserContract $user
      *
      * @return bool
      */
-    public function listRoutes($ability, User $user)
+    public function listRoutes($ability, UserContract $user)
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
