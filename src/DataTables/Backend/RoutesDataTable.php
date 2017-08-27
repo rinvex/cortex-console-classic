@@ -59,7 +59,7 @@ class RoutesDataTable extends AbstractDataTable
      */
     protected function filename()
     {
-        return 'routes_export_'.date('Y-m-d').'_'.time();
+        return 'routes-export-'.date('Y-m-d').'-'.time();
     }
 
     /**
