@@ -18,7 +18,7 @@ class Terminal extends ConsoleApplication
      *
      * @param array|mixed $commands
      *
-     * @return $this|\Illuminate\Console\Application
+     * @return static|\Illuminate\Console\Application
      */
     public function resolveCommands($commands)
     {
