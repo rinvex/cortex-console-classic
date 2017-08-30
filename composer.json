@@ -48,7 +48,7 @@
         "illuminate/filesystem": "~5.5.0",
         "laravel/framework": "~5.5.0",
         "laravelcollective/html": "^5.4.0",
-        "proengsoft/laravel-jsvalidation": "dev-master",
+        "proengsoft/laravel-jsvalidation": "^2.1.0",
         "rinvex/composable": "dev-develop",
         "rinvex/fort": "dev-develop",
         "spatie/laravel-menu": "^3.0.0",
