@@ -51,6 +51,7 @@
         "proengsoft/laravel-jsvalidation": "dev-master",
         "rinvex/composable": "dev-develop",
         "rinvex/fort": "dev-develop",
+        "spatie/laravel-menu": "^3.0.0",
         "symfony/console": "~2.8|~3.0"
     },
     "autoload": {
