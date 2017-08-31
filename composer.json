@@ -53,6 +53,7 @@
         "rinvex/fort": "dev-develop",
         "spatie/laravel-menu": "^3.0.0",
         "symfony/console": "~2.8|~3.0",
+        "yajra/laravel-datatables-fractal": "^1.0.0",
         "yajra/laravel-datatables-buttons": "^3.0.0",
         "yajra/laravel-datatables-html": "^3.0.0",
         "yajra/laravel-datatables-oracle": "^8.0.0"
