@@ -30,9 +30,8 @@ class RoutesDataTable extends AbstractDataTable
             ];
         });
 
-        return $this->datatables
-            ->collection($routes)
-            ->make(true);
+        return datatables()->collection($routes)
+                           ->make(true);
     }
 
     /**
