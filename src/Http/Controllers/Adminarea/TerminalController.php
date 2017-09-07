@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Console\Http\Controllers\Backend;
+namespace Cortex\Console\Http\Controllers\Adminarea;
 
 use Exception;
 use Illuminate\Http\Request;
@@ -47,7 +47,7 @@ class TerminalController extends AuthorizedController
             'basePath' => app()->basePath(),
             'environment' => app()->environment(),
             'version' => app()->version(),
-            'endpoint' => route('backend.console.terminal.execute'),
+            'endpoint' => route('adminarea.console.terminal.execute'),
             'interpreters' => [
                 'mysql' => 'mysql',
                 'artisan tinker' => 'tinker',
@@ -65,7 +65,7 @@ class TerminalController extends AuthorizedController
             ],
         ]);
 
-        return view('cortex/console::backend.forms.terminal', compact('options'));
+        return view('cortex/console::adminarea.forms.terminal', compact('options'));
     }
 
     /**
@@ -96,6 +96,6 @@ class TerminalController extends AuthorizedController
      */
     protected function renderException(Exception $exception)
     {
-        return view('cortex/console::backend.forms.error', ['message' => $exception->getMessage()]);
+        return view('cortex/console::adminarea.forms.error', ['message' => $exception->getMessage()]);
     }
 }

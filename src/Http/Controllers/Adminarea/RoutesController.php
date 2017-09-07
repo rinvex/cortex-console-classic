@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Console\Http\Controllers\Backend;
+namespace Cortex\Console\Http\Controllers\Adminarea;
 
 use Closure;
-use Cortex\Console\DataTables\Backend\RoutesDataTable;
+use Cortex\Console\DataTables\Adminarea\RoutesDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
 class RoutesController extends AuthorizedController
@@ -30,6 +30,6 @@ class RoutesController extends AuthorizedController
             'id' => 'cortex-console-routes',
             'middlewareClosure' => $middlewareClosure,
             'phrase' => trans('cortex/console::common.routes'),
-        ])->render('cortex/foundation::backend.pages.datatable');
+        ])->render('cortex/foundation::adminarea.pages.datatable');
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Console\DataTables\Backend;
+namespace Cortex\Console\DataTables\Adminarea;
 
 use Illuminate\Routing\Route;
 use Cortex\Foundation\DataTables\AbstractDataTable;
