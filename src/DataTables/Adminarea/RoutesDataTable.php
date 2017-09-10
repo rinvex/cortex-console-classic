@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Console\DataTables\Backend;
+namespace Cortex\Console\DataTables\Adminarea;
 
 use Illuminate\Routing\Route;
 use Cortex\Foundation\DataTables\AbstractDataTable;
@@ -30,9 +30,8 @@ class RoutesDataTable extends AbstractDataTable
             ];
         });
 
-        return $this->datatables
-            ->collection($routes)
-            ->make(true);
+        return datatables()->collection($routes)
+                           ->make(true);
     }
 
     /**
@@ -59,7 +58,7 @@ class RoutesDataTable extends AbstractDataTable
      */
     protected function filename()
     {
-        return 'routes_export_'.date('Y-m-d').'_'.time();
+        return 'routes-export-'.date('Y-m-d').'-'.time();
     }
 
     /**

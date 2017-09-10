@@ -1,9 +1,9 @@
 {{-- Master Layout --}}
-@extends('cortex/foundation::backend.layouts.default')
+@extends('cortex/foundation::adminarea.layouts.default')
 
 {{-- Page Title --}}
 @section('title')
-    {{ config('app.name') }} » {{ trans('cortex/foundation::common.backend') }} » {{ trans('cortex/console::common.console') }} » {{ trans('cortex/console::common.routes') }}
+    {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/console::common.console') }} » {{ trans('cortex/console::common.routes') }}
 @stop
 
 {{-- Main Content --}}
@@ -49,7 +49,7 @@
                                                     <span class="tag tag-{{ array_get($methodColours, $method) }}">{{ $method }}</span>
                                                 @endforeach
                                             </td>
-                                            <td class="domain{{ strlen($route->domain()) == 0 ? ' domain-empty' : '' }}">{{ $route->domain() }}</td>
+                                            <td class="domain{{ strlen($route->domain()) === 0 ? ' domain-empty' : '' }}">{{ $route->domain() }}</td>
                                             <td>{!! preg_replace('#({[^}]+})#', '<span class="text-warning">$1</span>', $route->uri()) !!}</td>
                                             <td>{{ $route->getName() }}</td>
                                             <td>{!! preg_replace('#(@.*)$#', '<span class="text-warning">$1</span>', $route->getActionName()) !!}</td>
@@ -86,7 +86,7 @@
             var table = document.querySelector('.table');
             var domains = table.querySelectorAll('tbody .domain');
             var emptyDomains = table.querySelectorAll('tbody .domain-empty');
-            if (domains.length == emptyDomains.length) {
+            if (domains.length === emptyDomains.length) {
                 table.className += ' hide-domains';
             }
 

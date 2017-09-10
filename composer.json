@@ -38,16 +38,25 @@
     ],
     "require": {
         "php": "^7.0.0",
-        "composer/composer": "^1.4",
+        "barryvdh/laravel-snappy": "^0.4.0",
+        "composer/composer": "^1.5.0",
+        "cortex/foundation": "dev-develop",
         "illuminate/http": "~5.5.0",
         "illuminate/support": "~5.5.0",
         "illuminate/console": "~5.5.0",
         "illuminate/database": "~5.5.0",
         "illuminate/filesystem": "~5.5.0",
-        "symfony/console": "~2.8|~3.0",
         "laravel/framework": "~5.5.0",
-        "cortex/foundation": "dev-develop",
-        "rinvex/composable": "dev-develop"
+        "laravelcollective/html": "~5.5.0",
+        "proengsoft/laravel-jsvalidation": "^2.1.0",
+        "rinvex/composer": "dev-develop",
+        "rinvex/fort": "dev-develop",
+        "spatie/laravel-menu": "^3.0.0",
+        "symfony/console": "~2.8|~3.0",
+        "yajra/laravel-datatables-fractal": "^1.0.0",
+        "yajra/laravel-datatables-buttons": "^3.0.0",
+        "yajra/laravel-datatables-html": "^3.0.0",
+        "yajra/laravel-datatables-oracle": "^8.0.0"
     },
     "autoload": {
         "psr-4": {

@@ -48,7 +48,7 @@ class Tail extends Command
     /**
      * fire.
      */
-    public function fire()
+    public function handle()
     {
         $path = $this->argument('path');
         $lines = (int) $this->option('lines');

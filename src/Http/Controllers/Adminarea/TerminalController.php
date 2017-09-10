@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Cortex\Console\Http\Controllers\Backend;
+namespace Cortex\Console\Http\Controllers\Adminarea;
 
+use Exception;
 use Illuminate\Http\Request;
 use Cortex\Console\Services\Terminal;
+use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
-class TerminalController extends ConsoleController
+class TerminalController extends AuthorizedController
 {
     /**
      * {@inheritdoc}
@@ -15,17 +17,26 @@ class TerminalController extends ConsoleController
     protected $resource = 'terminal';
 
     /**
+     * {@inheritdoc}
+     */
+    protected $resourceAbilityMap = [
+        'index' => 'run',
+        'execute' => 'run',
+    ];
+
+    /**
      * Show the form for create/update of the given resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function form(Terminal $terminal, Request $request)
+    public function index(Terminal $terminal, Request $request)
     {
         $token = null;
+
         if ($request->hasSession() === true) {
             $token = $request->session()->token();
         }
-        //dd($terminal->all());
+
         $terminal->call('list --ansi');
         $options = json_encode([
             'username' => 'LARAVEL',
@@ -36,7 +47,7 @@ class TerminalController extends ConsoleController
             'basePath' => app()->basePath(),
             'environment' => app()->environment(),
             'version' => app()->version(),
-            'endpoint' => route('backend.console.terminal.execute'),
+            'endpoint' => route('adminarea.console.terminal.execute'),
             'interpreters' => [
                 'mysql' => 'mysql',
                 'artisan tinker' => 'tinker',
@@ -54,7 +65,7 @@ class TerminalController extends ConsoleController
             ],
         ]);
 
-        return view('cortex/console::backend.forms.terminal', compact('options'));
+        return view('cortex/console::adminarea.forms.terminal', compact('options'));
     }
 
     /**
@@ -64,7 +75,7 @@ class TerminalController extends ConsoleController
      *
      * @return \Illuminate\Http\Response
      */
-    protected function execute(Terminal $terminal, Request $request)
+    public function execute(Terminal $terminal, Request $request)
     {
         $error = $terminal->call($request->get('command'));
 
@@ -74,5 +85,17 @@ class TerminalController extends ConsoleController
             'result' => $terminal->output(),
             'error' => $error,
         ]);
+    }
+
+    /**
+     * Render exception.
+     *
+     * @param \Exception $exception
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function renderException(Exception $exception)
+    {
+        return view('cortex/console::adminarea.forms.error', ['message' => $exception->getMessage()]);
     }
 }

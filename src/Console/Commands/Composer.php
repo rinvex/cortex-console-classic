@@ -27,7 +27,7 @@ class Composer extends Command
     /**
      * handle.
      */
-    public function fire()
+    public function handle()
     {
         $input = new StringInput(trim($this->option('command')));
         $output = $this->getOutput();

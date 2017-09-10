@@ -24,7 +24,7 @@ class Artisan extends Command
      *
      * @var string
      */
-    protected $description = 'laravel artisan';
+    protected $description = 'Laravel Artisan';
 
     /**
      * no support array.
@@ -51,6 +51,7 @@ class Artisan extends Command
     public function __construct(ArtisanContract $artisan)
     {
         parent::__construct();
+
         $this->artisan = $artisan;
     }
 
@@ -59,7 +60,7 @@ class Artisan extends Command
      *
      * @throws \InvalidArgumentException
      */
-    public function fire()
+    public function handle()
     {
         $command = $this->forceCommand($this->option('command'));
 

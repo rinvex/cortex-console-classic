@@ -47,7 +47,7 @@ class Vi extends Command
     /**
      * fire.
      */
-    public function fire()
+    public function handle()
     {
         $path = $this->argument('path');
         $text = $this->option('text');

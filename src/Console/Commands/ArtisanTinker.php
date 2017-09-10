@@ -26,7 +26,7 @@ class ArtisanTinker extends Command
     /**
      * fire.
      */
-    public function fire()
+    public function handle()
     {
         $command = $this->option('command');
 
