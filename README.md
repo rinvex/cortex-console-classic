@@ -3,7 +3,6 @@
 **Cortex Console** is a set of powerful tools for administrators and system support staff, to maintain the project through a web console.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/console.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/console)
-[![VersionEye Dependencies](https://img.shields.io/versioneye/d/php/cortex:console.svg?label=Dependencies&style=flat-square)](https://www.versioneye.com/php/cortex:console/)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/console.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/console/)
 [![Code Climate](https://img.shields.io/codeclimate/github/cortex/console.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/console)
 [![Travis](https://img.shields.io/travis/cortex/console.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/console)
