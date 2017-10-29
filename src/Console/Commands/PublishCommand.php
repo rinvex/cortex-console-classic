@@ -29,7 +29,7 @@ class PublishCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Publish cortex/console:');
+        $this->warn($this->description);
         $this->call('vendor:publish', ['--tag' => 'cortex-console-views', '--force' => $this->option('force')]);
         $this->call('vendor:publish', ['--tag' => 'cortex-console-lang', '--force' => $this->option('force')]);
     }

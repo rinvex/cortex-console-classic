@@ -29,7 +29,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $this->warn('Install cortex/console:');
+        $this->warn($this->description);
         $this->call('cortex:publish:console');
     }
 }
