@@ -43,7 +43,8 @@ class OutputFormatterStyle {
     }
 
     apply(text) {
-        return `[[;${this.foreground};${this.background}]${$.terminal.escape_brackets(text)}]`;
+        return `[[;${this.foreground};${this
+            .background}]${$.terminal.escape_brackets(text)}]`;
     }
 }
 

@@ -13,21 +13,30 @@ class Command {
 
     call(cmd) {
         this.api.loading.show();
-        this.makeRequest(cmd.command).then((response) => {
-            const responseResult = response.result ? response.result : response;
-            this.api.loading.hide();
-            this.api.echo(responseResult);
-            this.api.serverInfo();
-        }, (response) => {
-            const responseResult = response.result ? response.result : response;
-            this.api.loading.hide();
-            this.api.echo(responseResult);
-            this.api.serverInfo();
-        });
+        this.makeRequest(cmd.command).then(
+            response => {
+                const responseResult = response.result
+                    ? response.result
+                    : response;
+                this.api.loading.hide();
+                this.api.echo(responseResult);
+                this.api.serverInfo();
+            },
+            response => {
+                const responseResult = response.result
+                    ? response.result
+                    : response;
+                this.api.loading.hide();
+                this.api.echo(responseResult);
+                this.api.serverInfo();
+            }
+        );
     }
 
     addslashes(str) {
-        return (String(str)).replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+        return String(str)
+            .replace(/[\\"']/g, '\\$&')
+            .replace(/\u0000/g, '\\0');
     }
 
     makeRequest(command) {
@@ -44,7 +53,7 @@ class Command {
                     id: ++this.requestId,
                     command,
                 },
-                success: (response) => {
+                success: response => {
                     if (response.error !== 0) {
                         reject(response);
                         return;
