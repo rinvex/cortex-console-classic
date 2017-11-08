@@ -29,7 +29,7 @@ class Terminal {
 
         this.$element.terminal(this.run.bind(this), {
             greetings: this.greetings(),
-            onInit: (term) => {
+            onInit: term => {
                 this.$term = term;
                 this.loading = new Loading(term);
                 this.commands = [
@@ -49,14 +49,16 @@ class Terminal {
             prompt: this.prompt,
         });
 
-        this.$win.on('resize', () => {
-            if (parentTagName === 'body') {
-                this.$element.width(this.$parent.width() - 20);
-                this.$element.height(this.$parent.height() - 20);
-            } else {
-                this.scrollToBottom();
-            }
-        }).trigger('resize');
+        this.$win
+            .on('resize', () => {
+                if (parentTagName === 'body') {
+                    this.$element.width(this.$parent.width() - 20);
+                    this.$element.height(this.$parent.height() - 20);
+                } else {
+                    this.scrollToBottom();
+                }
+            })
+            .trigger('resize');
 
         this.$parent.on('click', () => {
             if (this.$term) {
@@ -93,11 +95,14 @@ class Terminal {
     }
 
     interpreter(prompt) {
-        this.$term.push((command) => {
-            this.run(`${prompt.replace(/\s+/g, '-')} ${command}`);
-        }, {
-            prompt: `${prompt}> `,
-        });
+        this.$term.push(
+            command => {
+                this.run(`${prompt.replace(/\s+/g, '-')} ${command}`);
+            },
+            {
+                prompt: `${prompt}> `,
+            }
+        );
     }
 
     greetings() {
@@ -135,7 +140,10 @@ Interactive commands does \`${this.comment('NOT')}\` work through web.`;
     }
 
     echo(text) {
-        const regex = new RegExp('(\\033\\[(\\d+)(;\\d+)?m(((?!\\033\\[\\d+).)*)\\033\\[(\\d+)(;\\d+)?m)|(\\[|\\])', 'g');
+        const regex = new RegExp(
+            '(\\033\\[(\\d+)(;\\d+)?m(((?!\\033\\[\\d+).)*)\\033\\[(\\d+)(;\\d+)?m)|(\\[|\\])',
+            'g'
+        );
         let content;
         text = text.replace(regex, (...m) => {
             if (['[', ']'].includes(m[0]) === true) {
@@ -156,7 +164,7 @@ Interactive commands does \`${this.comment('NOT')}\` work through web.`;
 
             return m[0];
         });
-        text.split('\n').forEach((line) => {
+        text.split('\n').forEach(line => {
             if (line === '') {
                 line = ' ';
             }
@@ -174,18 +182,21 @@ Interactive commands does \`${this.comment('NOT')}\` work through web.`;
             }
             this.$term.echo(message);
             this.scrollToBottom();
-            this.$term.push((result) => {
-                if (this.toBoolean(result) === true) {
-                    resolve(true);
-                } else {
-                    reject(false);
-                    this.serverInfo();
+            this.$term.push(
+                result => {
+                    if (this.toBoolean(result) === true) {
+                        resolve(true);
+                    } else {
+                        reject(false);
+                        this.serverInfo();
+                    }
+                    this.$term.pop();
+                    history.enable();
+                },
+                {
+                    prompt: ' > ',
                 }
-                this.$term.pop();
-                history.enable();
-            }, {
-                prompt: ' > ',
-            });
+            );
         });
     }
 
