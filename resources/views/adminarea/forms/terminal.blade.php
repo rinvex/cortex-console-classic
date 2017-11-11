@@ -10,6 +10,10 @@
     <link href="{{ mix('css/terminal.css') }}" rel="stylesheet">
 @endpush
 
+@push('scripts-vendor')
+    <script src="{{ mix('js/terminal.js') }}" type="text/javascript"></script>
+@endpush
+
 @push('scripts')
     <script>
         $('#terminal-shell').slimScroll({
