@@ -7,11 +7,11 @@
 @stop
 
 @push('styles')
-    <link href="{{ mix('css/terminal.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/terminal.css', 'assets') }}" rel="stylesheet">
 @endpush
 
 @push('scripts-vendor')
-    <script src="{{ mix('js/terminal.js') }}" type="text/javascript"></script>
+    <script src="{{ mix('js/terminal.js', 'assets') }}" type="text/javascript"></script>
 @endpush
 
 @push('scripts')
