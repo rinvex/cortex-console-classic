@@ -75,6 +75,7 @@ class RoutesDataTable extends AbstractDataTable
             'buttons' => [
                 'print', 'reset', 'reload', 'export',
                 ['extend' => 'colvis', 'text' => '<i class="fa fa-columns"></i> '.trans('cortex/foundation::common.columns').' <span class="caret"/>'],
+                ['extend' => 'pageLength', 'text' => '<i class="fa fa-list-ol"></i> '.trans('cortex/foundation::common.limit').' <span class="caret"/>'],
             ],
         ];
     }
