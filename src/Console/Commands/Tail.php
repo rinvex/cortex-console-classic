@@ -96,7 +96,7 @@ class Tail extends Command
             }
             $content = fgets($fp);
             $result[] = $content;
-            ++$i;
+            $i++;
         }
         fclose($fp);
 
