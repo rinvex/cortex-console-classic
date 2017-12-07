@@ -65,7 +65,7 @@ class TerminalController extends AuthorizedController
             ],
         ]);
 
-        return view('cortex/console::adminarea.forms.terminal', compact('options'));
+        return view('cortex/console::adminarea.pages.terminal', compact('options'));
     }
 
     /**
@@ -96,6 +96,6 @@ class TerminalController extends AuthorizedController
      */
     protected function renderException(Exception $exception)
     {
-        return view('cortex/console::adminarea.forms.error', ['message' => $exception->getMessage()]);
+        return view('cortex/console::adminarea.pages.error', ['message' => $exception->getMessage()]);
     }
 }
