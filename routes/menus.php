@@ -2,5 +2,12 @@
 
 declare(strict_types=1);
 
-Menu::adminareaSidebar('tools')->routeIfCan('run-terminal', 'adminarea.console.routes.index', '<i class="fa fa-globe"></i> <span>'.trans('cortex/console::common.routes').'</span>');
-Menu::adminareaSidebar('tools')->routeIfCan('list-routes', 'adminarea.console.terminal.index', '<i class="fa fa-terminal"></i> <span>'.trans('cortex/console::common.terminal').'</span>');
+use Rinvex\Menus\Models\MenuItem;
+use Rinvex\Menus\Factories\MenuFactory;
+
+Menu::modify('adminarea.sidebar', function(MenuFactory $menu) {
+    $menu->findBy('title', trans('cortex/foundation::common.maintenance'), function (MenuItem $dropdown) {
+        $dropdown->route(['adminarea.console.routes.index'], trans('cortex/console::common.routes'), 10, 'fa fa-globe')->can('list-routes');
+        $dropdown->route(['adminarea.console.terminal.index'], trans('cortex/console::common.terminal'), 20, 'fa fa-terminal')->can('run-terminal');
+    });
+});
