@@ -3,11 +3,11 @@
 **Cortex Console** is a set of powerful tools for administrators and system support staff, to maintain the project through a web console.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/console.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/console)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/cortex/console.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/cortex/console/)
-[![Code Climate](https://img.shields.io/codeclimate/github/cortex/console.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/cortex/console)
-[![Travis](https://img.shields.io/travis/cortex/console.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/cortex/console)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/cortex-console.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/cortex-console/)
+[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/cortex-console.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/cortex-console)
+[![Travis](https://img.shields.io/travis/rinvex/cortex-console.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/cortex-console)
 [![StyleCI](https://styleci.io/repos/99706187/shield)](https://styleci.io/repos/99706187)
-[![License](https://img.shields.io/packagist/l/cortex/console.svg?label=License&style=flat-square)](https://github.com/cortex/console/blob/develop/LICENSE)
+[![License](https://img.shields.io/packagist/l/cortex/console.svg?label=License&style=flat-square)](https://github.com/rinvex/cortex-console/blob/develop/LICENSE)
 
 
 ## Installation and Usage
