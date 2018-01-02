@@ -41,11 +41,11 @@
         "barryvdh/laravel-snappy": "^0.4.0",
         "composer/composer": "^1.5.0",
         "cortex/foundation": "dev-develop",
-        "illuminate/http": "~5.5.0",
-        "illuminate/support": "~5.5.0",
         "illuminate/console": "~5.5.0",
         "illuminate/database": "~5.5.0",
         "illuminate/filesystem": "~5.5.0",
+        "illuminate/http": "~5.5.0",
+        "illuminate/support": "~5.5.0",
         "laravel/framework": "~5.5.0",
         "laravelcollective/html": "~5.5.0",
         "proengsoft/laravel-jsvalidation": "^2.1.0",
@@ -53,15 +53,14 @@
         "rinvex/fort": "dev-develop",
         "rinvex/menus": "dev-develop",
         "symfony/console": "~2.8|~3.0",
-        "roave/security-advisories": "dev-master",
-        "yajra/laravel-datatables-fractal": "^1.0.0",
         "yajra/laravel-datatables-buttons": "^3.0.0",
+        "yajra/laravel-datatables-fractal": "^1.0.0",
         "yajra/laravel-datatables-html": "^3.0.0",
         "yajra/laravel-datatables-oracle": "^8.0.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0.0",
-        "codedungeon/phpunit-result-printer": "^0.4.0"
+        "codedungeon/phpunit-result-printer": "^0.4.0",
+        "phpunit/phpunit": "^6.0.0"
     },
     "autoload": {
         "psr-4": {
