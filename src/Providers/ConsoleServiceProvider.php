@@ -12,6 +12,7 @@ use Cortex\Console\Console\Commands\Tail;
 use Cortex\Console\Console\Commands\Mysql;
 use Cortex\Console\Console\Commands\Artisan;
 use Cortex\Console\Console\Commands\Composer;
+use Cortex\Console\Console\Commands\SeedCommand;
 use Cortex\Console\Console\Commands\ArtisanTinker;
 use Cortex\Console\Console\Commands\InstallCommand;
 use Cortex\Console\Console\Commands\PublishCommand;
@@ -24,6 +25,7 @@ class ConsoleServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        SeedCommand::class => 'command.cortex.console.seed',
         PublishCommand::class => 'command.cortex.console.publish',
         InstallCommand::class => 'command.cortex.console.install',
     ];
