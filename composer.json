@@ -53,6 +53,7 @@
         "rinvex/fort": "dev-develop",
         "rinvex/menus": "dev-develop",
         "symfony/console": "~2.8|~3.0",
+        "roave/security-advisories": "dev-master",
         "yajra/laravel-datatables-fractal": "^1.0.0",
         "yajra/laravel-datatables-buttons": "^3.0.0",
         "yajra/laravel-datatables-html": "^3.0.0",
