@@ -11,7 +11,7 @@
 @endpush
 
 @push('vendor-scripts')
-    <script src="{{ mix('js/terminal.js', 'assets') }}" type="text/javascript"></script>
+    <script src="{{ mix('js/terminal.js', 'assets') }}" defer></script>
 @endpush
 
 @push('inline-scripts')
