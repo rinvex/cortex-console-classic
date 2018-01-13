@@ -10,11 +10,11 @@
     <link href="{{ mix('css/terminal.css', 'assets') }}" rel="stylesheet">
 @endpush
 
-@push('scripts-vendor')
+@push('vendor-scripts')
     <script src="{{ mix('js/terminal.js', 'assets') }}" type="text/javascript"></script>
 @endpush
 
-@push('scripts')
+@push('inline-scripts')
     <script>
         $('#terminal-shell').slimScroll({
             height: $('.content-wrapper').height() - 207 +'px'
