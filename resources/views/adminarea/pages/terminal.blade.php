@@ -6,6 +6,10 @@
     {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/console::common.console') }} » {{ trans('cortex/console::common.routes') }}
 @stop
 
+@push('head-elements')
+    <meta name="turbolinks-cache-control" content="no-cache">
+@endpush
+
 @push('styles')
     <link href="{{ mix('css/terminal.css', 'assets') }}" rel="stylesheet">
 @endpush
