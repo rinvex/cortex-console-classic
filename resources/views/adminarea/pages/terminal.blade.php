@@ -20,13 +20,15 @@
 
 @push('inline-scripts')
     <script>
-        $('#terminal-shell').slimScroll({
-            height: $('.content-wrapper').height() - 207 +'px'
-        });
+        window.addEventListener('turbolinks:load', function() {
+            $('#terminal-shell').slimScroll({
+                height: $('.content-wrapper').height() - 207 +'px'
+            });
 
-        (function() {
-            new Terminal("#terminal-shell", {!! $options !!});
-        })();
+            (function() {
+                new Terminal("#terminal-shell", {!! $options !!});
+            })();
+        });
     </script>
 @endpush
 
