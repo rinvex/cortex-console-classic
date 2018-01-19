@@ -38,7 +38,6 @@
     ],
     "require": {
         "php": "^7.1.0",
-        "barryvdh/laravel-snappy": "^0.4.0",
         "composer/composer": "^1.5.0",
         "cortex/foundation": "dev-develop",
         "illuminate/console": "~5.5.0",
