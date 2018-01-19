@@ -4,7 +4,7 @@
 {{-- Page Title --}}
 @section('title')
     {{ config('app.name') }} » {{ trans('cortex/foundation::common.adminarea') }} » {{ trans('cortex/console::common.console') }} » {{ trans('cortex/console::common.routes') }}
-@stop
+@endsection
 
 @push('head-elements')
     <meta name="turbolinks-cache-control" content="no-cache">
