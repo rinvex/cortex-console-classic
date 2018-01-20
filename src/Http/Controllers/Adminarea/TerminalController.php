@@ -27,7 +27,7 @@ class TerminalController extends AuthorizedController
     /**
      * Show the form for create/update of the given resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index(Terminal $terminal, Request $request)
     {
@@ -73,7 +73,7 @@ class TerminalController extends AuthorizedController
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function execute(Terminal $terminal, Request $request)
     {
@@ -92,7 +92,7 @@ class TerminalController extends AuthorizedController
      *
      * @param \Exception $exception
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     protected function renderException(Exception $exception)
     {
