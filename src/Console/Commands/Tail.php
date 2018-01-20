@@ -77,14 +77,14 @@ class Tail extends Command
      * @param string $file
      * @param int    $lines
      *
-     * @return string
+     * @return string|null
      */
-    protected function readLine($file, $lines = 50)
+    protected function readLine($file, $lines = 50): ?string
     {
         if (is_file($file) === false) {
             $this->error('tail: cannot open ‘'.$file.'’ for reading: No such file or directory');
 
-            return;
+            return null;
         }
 
         $fp = fopen($file, 'r');
@@ -108,7 +108,7 @@ class Tail extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['path', InputArgument::OPTIONAL, 'path'],
@@ -120,7 +120,7 @@ class Tail extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['lines', null, InputOption::VALUE_OPTIONAL, 'output the last K lines, instead of the last 50', 50],

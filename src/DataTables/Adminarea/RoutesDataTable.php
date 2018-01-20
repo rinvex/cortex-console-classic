@@ -39,7 +39,7 @@ class RoutesDataTable extends AbstractDataTable
      *
      * @return array
      */
-    protected function getColumns()
+    protected function getColumns(): array
     {
         return [
             'domain' => ['title' => trans('cortex/console::common.domain')],
@@ -56,7 +56,7 @@ class RoutesDataTable extends AbstractDataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'routes-export-'.date('Y-m-d').'-'.time();
     }
@@ -66,7 +66,7 @@ class RoutesDataTable extends AbstractDataTable
      *
      * @return array
      */
-    protected function getBuilderParameters()
+    protected function getBuilderParameters(): array
     {
         return [
             'keys' => true,

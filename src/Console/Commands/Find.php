@@ -66,7 +66,7 @@ class Find extends Command
      *
      * @return int
      */
-    public function run(InputInterface $input, OutputInterface $output)
+    public function run(InputInterface $input, OutputInterface $output): int
     {
         $command = (string) $input;
         $command = strtr($command, [
@@ -82,7 +82,7 @@ class Find extends Command
     /**
      * fire.
      */
-    public function handle()
+    public function handle(): void
     {
         $path = $this->argument('path');
         $name = $this->option('name');
@@ -143,7 +143,7 @@ class Find extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['path', InputArgument::REQUIRED, 'path'],
@@ -155,7 +155,7 @@ class Find extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['type', 'T', InputOption::VALUE_OPTIONAL, 'File is of type c: [f, d]'],

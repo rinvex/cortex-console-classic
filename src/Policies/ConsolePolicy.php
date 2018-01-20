@@ -19,7 +19,7 @@ class ConsolePolicy
      *
      * @return bool
      */
-    public function runTerminal($ability, UserContract $user)
+    public function runTerminal($ability, UserContract $user): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }
@@ -32,7 +32,7 @@ class ConsolePolicy
      *
      * @return bool
      */
-    public function listRoutes($ability, UserContract $user)
+    public function listRoutes($ability, UserContract $user): bool
     {
         return $user->allAbilities->pluck('slug')->contains($ability);
     }

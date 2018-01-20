@@ -42,7 +42,7 @@ class Composer extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['command', null, InputOption::VALUE_OPTIONAL],

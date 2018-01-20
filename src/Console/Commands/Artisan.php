@@ -82,7 +82,7 @@ class Artisan extends Command
      *
      * @return string
      */
-    protected function forceCommand($command)
+    protected function forceCommand($command): string
     {
         return (
             starts_with($command, 'migrate') === true && starts_with($command, 'migrate:status') === false ||
@@ -96,7 +96,7 @@ class Artisan extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['command', null, InputOption::VALUE_OPTIONAL],
