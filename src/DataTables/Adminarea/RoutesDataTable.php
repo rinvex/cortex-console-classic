@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\Route as RouteFacade;
 class RoutesDataTable extends AbstractDataTable
 {
     /**
-     * Display ajax response.
+     * Get the query object to be processed by dataTables.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
      */
-    public function ajax()
+    public function query()
     {
         $routes = collect(RouteFacade::getRoutes());
 
@@ -30,8 +30,7 @@ class RoutesDataTable extends AbstractDataTable
             ];
         });
 
-        return datatables($routes)
-            ->make(true);
+        return $routes;
     }
 
     /**
