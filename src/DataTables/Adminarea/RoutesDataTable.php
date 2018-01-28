@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Route as RouteFacade;
 class RoutesDataTable extends AbstractDataTable
 {
     /**
+     * {@inheritdoc}
+     */
+    protected $createButton = false;
+
+    /**
      * Get the query object to be processed by dataTables.
      *
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
@@ -58,25 +63,5 @@ class RoutesDataTable extends AbstractDataTable
     protected function filename(): string
     {
         return 'routes-export-'.date('Y-m-d').'-'.time();
-    }
-
-    /**
-     * Get default builder parameters.
-     *
-     * @return array
-     */
-    protected function getBuilderParameters(): array
-    {
-        return [
-            'keys' => true,
-            'retrieve' => true,
-            'autoWidth' => false,
-            'dom' => "<'row'<'col-sm-6'B><'col-sm-6'f>> <'row'r><'row'<'col-sm-12't>> <'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'buttons' => [
-                'print', 'reset', 'reload', 'export',
-                ['extend' => 'colvis', 'text' => '<i class="fa fa-columns"></i> '.trans('cortex/foundation::common.columns').' <span class="caret"/>'],
-                ['extend' => 'pageLength', 'text' => '<i class="fa fa-list-ol"></i> '.trans('cortex/foundation::common.limit').' <span class="caret"/>'],
-            ],
-        ];
     }
 }
