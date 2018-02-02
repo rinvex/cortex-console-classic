@@ -13,7 +13,7 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:install:console';
+    protected $signature = 'cortex:install:console {--force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
@@ -31,6 +31,6 @@ class InstallCommand extends Command
     {
         $this->warn($this->description);
 
-        $this->call('cortex:publish:console');
+        $this->call('cortex:publish:console', ['--force' => $this->option('force')]);
     }
 }
