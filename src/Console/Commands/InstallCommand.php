@@ -32,5 +32,6 @@ class InstallCommand extends Command
         $this->warn($this->description);
 
         $this->call('cortex:publish:console', ['--force' => $this->option('force')]);
+        $this->call('cortex:seed:console');
     }
 }

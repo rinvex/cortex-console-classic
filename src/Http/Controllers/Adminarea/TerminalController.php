@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cortex\Console\Http\Controllers\Adminarea;
 
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Cortex\Console\Services\Terminal;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
@@ -25,11 +26,40 @@ class TerminalController extends AuthorizedController
     ];
 
     /**
-     * Show the form for create/update of the given resource.
+     * {@inheritdoc}
+     */
+    protected $resourceMethodsWithoutModels = [
+        'execute',
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public function authorizeResource($model, $parameter = null, array $options = [], $request = null): void
+    {
+        $middleware = [];
+        $parameter = $parameter ?: Str::snake(class_basename($model));
+
+        foreach ($this->mapResourceAbilities() as $method => $ability) {
+            $modelName = in_array($method, $this->resourceMethodsWithoutModels()) ? $model : $parameter;
+
+            $middleware["can:{$ability}-{$modelName},{$modelName}"][] = $method;
+        }
+
+        foreach ($middleware as $middlewareName => $methods) {
+            $this->middleware($middlewareName, $options)->only($methods);
+        }
+    }
+
+    /**
+     * Show terminal index.
+     *
+     * @param \Illuminate\Http\Request          $request
+     * @param \Cortex\Console\Services\Terminal $terminal
      *
      * @return \Illuminate\View\View
      */
-    public function index(Terminal $terminal, Request $request)
+    public function index(Request $request, Terminal $terminal)
     {
         $token = null;
 
