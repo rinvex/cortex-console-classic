@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cortex\Console\Http\Controllers\Adminarea;
 
 use Closure;
-use Illuminate\Support\Str;
 use Cortex\Console\DataTables\Adminarea\RoutesDataTable;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
 
@@ -14,26 +13,7 @@ class RoutesController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'routes';
-
-    /**
-     * {@inheritdoc}
-     */
-    public function authorizeResource($model, $parameter = null, array $options = [], $request = null): void
-    {
-        $middleware = [];
-        $parameter = $parameter ?: Str::snake(class_basename($model));
-
-        foreach ($this->mapResourceAbilities() as $method => $ability) {
-            $modelName = in_array($method, $this->resourceMethodsWithoutModels()) ? $model : $parameter;
-
-            $middleware["can:{$ability}-{$modelName},{$modelName}"][] = $method;
-        }
-
-        foreach ($middleware as $middlewareName => $methods) {
-            $this->middleware($middlewareName, $options)->only($methods);
-        }
-    }
+    protected $resource = 'list-routes';
 
     /**
      * List all routes.

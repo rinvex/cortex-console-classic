@@ -15,41 +15,7 @@ class TerminalController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'terminal';
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $resourceAbilityMap = [
-        'index' => 'run',
-        'execute' => 'run',
-    ];
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $resourceMethodsWithoutModels = [
-        'execute',
-    ];
-
-    /**
-     * {@inheritdoc}
-     */
-    public function authorizeResource($model, $parameter = null, array $options = [], $request = null): void
-    {
-        $middleware = [];
-        $parameter = $parameter ?: Str::snake(class_basename($model));
-
-        foreach ($this->mapResourceAbilities() as $method => $ability) {
-            $modelName = in_array($method, $this->resourceMethodsWithoutModels()) ? $model : $parameter;
-
-            $middleware["can:{$ability}-{$modelName},{$modelName}"][] = $method;
-        }
-
-        foreach ($middleware as $middlewareName => $methods) {
-            $this->middleware($middlewareName, $options)->only($methods);
-        }
-    }
+    protected $resource = 'run-terminal';
 
     /**
      * Show terminal index.
