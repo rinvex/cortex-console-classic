@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cortex\Console\Http\Controllers\Adminarea;
 
 use Exception;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Cortex\Console\Services\Terminal;
 use Cortex\Foundation\Http\Controllers\AuthorizedController;
