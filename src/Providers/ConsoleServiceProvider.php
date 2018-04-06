@@ -76,12 +76,12 @@ class ConsoleServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Load resources
-        require __DIR__.'/../../routes/breadcrumbs.php';
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        require __DIR__.'/../../routes/breadcrumbs/adminarea.php';
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/console');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/console');
         $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
-            require __DIR__.'/../../routes/menus.php';
+            require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
         // Publish Resources
