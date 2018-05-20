@@ -31,6 +31,6 @@ class RoutesController extends AuthorizedController
         return $routesDataTable->with([
             'id' => 'adminarea-routes-index-table',
             'middlewareClosure' => $middlewareClosure,
-        ])->render('cortex/foundation::adminarea.pages.datatable');
+        ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 }
