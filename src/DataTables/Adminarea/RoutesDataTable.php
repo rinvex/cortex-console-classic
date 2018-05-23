@@ -39,6 +39,17 @@ class RoutesDataTable extends AbstractDataTable
     }
 
     /**
+     * Display ajax response.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function ajax()
+    {
+        return datatables($this->query())
+            ->make(true);
+    }
+
+    /**
      * Get columns.
      *
      * @return array
