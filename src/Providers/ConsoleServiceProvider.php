@@ -12,6 +12,7 @@ use Cortex\Console\Console\Commands\Tail;
 use Cortex\Console\Console\Commands\Mysql;
 use Cortex\Console\Console\Commands\Artisan;
 use Cortex\Console\Console\Commands\Composer;
+use Cortex\Console\Console\Commands\SeedCommand;
 use Cortex\Console\Console\Commands\ArtisanTinker;
 use Cortex\Console\Console\Commands\InstallCommand;
 use Cortex\Console\Console\Commands\PublishCommand;
@@ -24,6 +25,7 @@ class ConsoleServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        SeedCommand::class => 'command.cortex.console.seed',
         PublishCommand::class => 'command.cortex.console.publish',
         InstallCommand::class => 'command.cortex.console.install',
     ];
@@ -37,7 +39,7 @@ class ConsoleServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         // Register console commands
         ! $this->app->runningInConsole() || $this->registerCommands();
@@ -71,15 +73,15 @@ class ConsoleServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Load resources
-        require __DIR__.'/../../routes/breadcrumbs.php';
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        require __DIR__.'/../../routes/breadcrumbs/adminarea.php';
+        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/console');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/console');
-        $this->app->afterResolving('blade.compiler', function () {
-            require __DIR__.'/../../routes/menus.php';
+        $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
+            require __DIR__.'/../../routes/menus/adminarea.php';
         });
 
         // Publish Resources
@@ -91,7 +93,7 @@ class ConsoleServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function publishResources()
+    protected function publishResources(): void
     {
         $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/console')], 'cortex-console-lang');
         $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/console')], 'cortex-console-views');
@@ -102,13 +104,11 @@ class ConsoleServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerCommands()
+    protected function registerCommands(): void
     {
         // Register artisan commands
         foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, function ($app) use ($key) {
-                return new $key();
-            });
+            $this->app->singleton($value, $key);
         }
 
         $this->commands(array_values($this->commands));

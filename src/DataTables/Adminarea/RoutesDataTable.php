@@ -11,11 +11,16 @@ use Illuminate\Support\Facades\Route as RouteFacade;
 class RoutesDataTable extends AbstractDataTable
 {
     /**
-     * Display ajax response.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * {@inheritdoc}
      */
-    public function ajax()
+    protected $createButton = false;
+
+    /**
+     * Get the query object to be processed by dataTables.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder|\Illuminate\Support\Collection
+     */
+    public function query()
     {
         $routes = collect(RouteFacade::getRoutes());
 
@@ -30,8 +35,18 @@ class RoutesDataTable extends AbstractDataTable
             ];
         });
 
-        return datatables()->collection($routes)
-                           ->make(true);
+        return $routes;
+    }
+
+    /**
+     * Display ajax response.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function ajax()
+    {
+        return datatables($this->query())
+            ->make(true);
     }
 
     /**
@@ -39,7 +54,7 @@ class RoutesDataTable extends AbstractDataTable
      *
      * @return array
      */
-    protected function getColumns()
+    protected function getColumns(): array
     {
         return [
             'domain' => ['title' => trans('cortex/console::common.domain')],
@@ -56,26 +71,8 @@ class RoutesDataTable extends AbstractDataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'routes-export-'.date('Y-m-d').'-'.time();
-    }
-
-    /**
-     * Get parameters.
-     *
-     * @return array
-     */
-    protected function getParameters()
-    {
-        return [
-            'keys' => true,
-            'autoWidth' => false,
-            'dom' => "<'row'<'col-sm-6'B><'col-sm-6'f>> <'row'r><'row'<'col-sm-12't>> <'row'<'col-sm-5'i><'col-sm-7'p>>",
-            'buttons' => [
-                'print', 'reset', 'reload', 'export',
-                ['extend' => 'colvis', 'text' => '<i class="fa fa-columns"></i> '.trans('cortex/foundation::common.columns').' <span class="caret"/>'],
-            ],
-        ];
     }
 }

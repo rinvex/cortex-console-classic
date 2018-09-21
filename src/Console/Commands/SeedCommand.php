@@ -6,21 +6,21 @@ namespace Cortex\Console\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class InstallCommand extends Command
+class SeedCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'cortex:install:console {--force : Force the operation to run when in production.}';
+    protected $signature = 'cortex:seed:console';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install Cortex Console Module.';
+    protected $description = 'Seed Cortex Console Data.';
 
     /**
      * Execute the console command.
@@ -31,7 +31,6 @@ class InstallCommand extends Command
     {
         $this->warn($this->description);
 
-        $this->call('cortex:publish:console', ['--force' => $this->option('force')]);
-        $this->call('cortex:seed:console');
+        $this->call('db:seed', ['--class' => 'CortexConsoleSeeder']);
     }
 }

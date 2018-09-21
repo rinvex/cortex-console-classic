@@ -13,7 +13,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:publish:console';
+    protected $signature = 'cortex:publish:console {--force : Overwrite any existing files.}';
 
     /**
      * The console command description.
@@ -27,10 +27,11 @@ class PublishCommand extends Command
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
-        $this->warn('Publish cortex/console:');
-        $this->call('vendor:publish', ['--tag' => 'cortex-console-views']);
-        $this->call('vendor:publish', ['--tag' => 'cortex-console-lang']);
+        $this->warn($this->description);
+
+        $this->call('vendor:publish', ['--tag' => 'cortex-console-lang', '--force' => $this->option('force')]);
+        $this->call('vendor:publish', ['--tag' => 'cortex-console-views', '--force' => $this->option('force')]);
     }
 }

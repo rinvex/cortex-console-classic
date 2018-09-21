@@ -66,7 +66,7 @@ class Vi extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['path', InputArgument::REQUIRED, 'path'],
@@ -78,7 +78,7 @@ class Vi extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['text', null, InputOption::VALUE_OPTIONAL],

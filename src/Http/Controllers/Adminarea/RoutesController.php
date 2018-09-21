@@ -13,23 +13,24 @@ class RoutesController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'routes';
+    protected $resource = 'list-routes';
 
     /**
-     * Display a listing of the resource.
+     * List all routes.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Cortex\Console\DataTables\Adminarea\RoutesDataTable $routesDataTable
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
-    public function index()
+    public function index(RoutesDataTable $routesDataTable)
     {
         $middlewareClosure = function ($middleware) {
             return $middleware instanceof Closure ? 'Closure' : $middleware;
         };
 
-        return app(RoutesDataTable::class)->with([
-            'id' => 'cortex-console-routes',
+        return $routesDataTable->with([
+            'id' => 'adminarea-routes-index-table',
             'middlewareClosure' => $middlewareClosure,
-            'phrase' => trans('cortex/console::common.routes'),
-        ])->render('cortex/foundation::adminarea.pages.datatable');
+        ])->render('cortex/foundation::adminarea.pages.datatable-index');
     }
 }

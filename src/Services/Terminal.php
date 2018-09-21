@@ -34,7 +34,7 @@ class Terminal extends ConsoleApplication
      *
      * @return int
      */
-    public function call($command, array $parameters = [], $outputBuffer = null)
+    public function call($command, array $parameters = [], $outputBuffer = null): int
     {
         $class = $outputBuffer ?: new BufferedOutput();
 

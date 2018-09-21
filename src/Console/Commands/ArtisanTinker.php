@@ -63,7 +63,7 @@ class ArtisanTinker extends Command
      *
      * @return string
      */
-    protected function executeCode($code)
+    protected function executeCode($code): string
     {
         $result = null;
         if (mb_strpos($code, 'echo') === false && mb_strpos($code, 'var_dump') === false) {
@@ -85,7 +85,7 @@ class ArtisanTinker extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             ['command', null, InputOption::VALUE_OPTIONAL],

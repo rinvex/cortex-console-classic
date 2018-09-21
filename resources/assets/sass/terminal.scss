@@ -1,8 +1,8 @@
-@import "../../../../../../node_modules/jquery.terminal/css/jquery.terminal";
-@import "../../../../../../node_modules/codemirror/lib/codemirror";
-@import "../../../../../../node_modules/codemirror/addon/dialog/dialog";
-@import "../../../../../../node_modules/codemirror/addon/display/fullscreen";
-@import "../../../../../../node_modules/codemirror/theme/monokai";
+@import '../../../../../../node_modules/jquery.terminal/css/jquery.terminal.min.css';
+@import '../../../../../../node_modules/codemirror/lib/codemirror.css';
+@import '../../../../../../node_modules/codemirror/addon/dialog/dialog.css';
+@import '../../../../../../node_modules/codemirror/addon/display/fullscreen.css';
+@import '../../../../../../node_modules/codemirror/theme/monokai.css';
 
 .terminal iframe {
     position: absolute;
@@ -14,11 +14,12 @@
     border: none;
     opacity: 0;
     pointer-events: none;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
-.terminal, .terminal iframe {
-    padding: 10px
+.terminal,
+.terminal iframe {
+    padding: 10px;
 }
 
 #terminal-shell {

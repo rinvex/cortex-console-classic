@@ -14,22 +14,17 @@ class TerminalController extends AuthorizedController
     /**
      * {@inheritdoc}
      */
-    protected $resource = 'terminal';
+    protected $resource = 'run-terminal';
 
     /**
-     * {@inheritdoc}
-     */
-    protected $resourceAbilityMap = [
-        'index' => 'run',
-        'execute' => 'run',
-    ];
-
-    /**
-     * Show the form for create/update of the given resource.
+     * Show terminal index.
      *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request          $request
+     * @param \Cortex\Console\Services\Terminal $terminal
+     *
+     * @return \Illuminate\View\View
      */
-    public function index(Terminal $terminal, Request $request)
+    public function index(Request $request, Terminal $terminal)
     {
         $token = null;
 
@@ -65,7 +60,7 @@ class TerminalController extends AuthorizedController
             ],
         ]);
 
-        return view('cortex/console::adminarea.forms.terminal', compact('options'));
+        return view('cortex/console::adminarea.pages.terminal', compact('options'));
     }
 
     /**
@@ -73,7 +68,7 @@ class TerminalController extends AuthorizedController
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function execute(Terminal $terminal, Request $request)
     {
@@ -92,10 +87,10 @@ class TerminalController extends AuthorizedController
      *
      * @param \Exception $exception
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     protected function renderException(Exception $exception)
     {
-        return view('cortex/console::adminarea.forms.error', ['message' => $exception->getMessage()]);
+        return view('cortex/console::adminarea.pages.error', ['message' => $exception->getMessage()]);
     }
 }
