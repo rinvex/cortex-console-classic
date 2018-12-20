@@ -11,11 +11,11 @@
 @endpush
 
 @push('styles')
-    <link href="{{ mix('css/terminal.css', 'assets') }}" rel="stylesheet">
+    <link href="{{ mix('css/terminal.css') }}" rel="stylesheet">
 @endpush
 
 @push('vendor-scripts')
-    <script src="{{ mix('js/terminal.js', 'assets') }}" defer></script>
+    <script src="{{ mix('js/terminal.js') }}" defer></script>
 @endpush
 
 @push('inline-scripts')

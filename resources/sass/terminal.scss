@@ -1,8 +1,8 @@
-@import '../../../../../../node_modules/jquery.terminal/css/jquery.terminal.min.css';
-@import '../../../../../../node_modules/codemirror/lib/codemirror.css';
-@import '../../../../../../node_modules/codemirror/addon/dialog/dialog.css';
-@import '../../../../../../node_modules/codemirror/addon/display/fullscreen.css';
-@import '../../../../../../node_modules/codemirror/theme/monokai.css';
+@import '../../../../../node_modules/jquery.terminal/css/jquery.terminal.min.css';
+@import '../../../../../node_modules/codemirror/lib/codemirror.css';
+@import '../../../../../node_modules/codemirror/addon/dialog/dialog.css';
+@import '../../../../../node_modules/codemirror/addon/display/fullscreen.css';
+@import '../../../../../node_modules/codemirror/theme/monokai.css';
 
 .terminal iframe {
     position: absolute;
