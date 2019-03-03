@@ -13,7 +13,13 @@ class CortexConsoleSeeder extends Seeder
      */
     public function run()
     {
-        Bouncer::allow('admin')->to('list-routes');
-        Bouncer::allow('admin')->to('run-terminal');
+        $abilities = [
+            ['name' => 'list-routes', 'title' => 'List Routes'],
+            ['name' => 'run-terminal', 'title' => 'Run Terminal'],
+        ];
+
+        collect($abilities)->each(function (array $ability) {
+            app('cortex.auth.ability')->create($ability);
+        });
     }
 }
