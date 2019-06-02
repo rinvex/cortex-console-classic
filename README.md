@@ -4,7 +4,6 @@
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/console.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/console)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/rinvex/cortex-console.svg?label=Scrutinizer&style=flat-square)](https://scrutinizer-ci.com/g/rinvex/cortex-console/)
-[![Code Climate](https://img.shields.io/codeclimate/github/rinvex/cortex-console.svg?label=CodeClimate&style=flat-square)](https://codeclimate.com/github/rinvex/cortex-console)
 [![Travis](https://img.shields.io/travis/rinvex/cortex-console.svg?label=TravisCI&style=flat-square)](https://travis-ci.org/rinvex/cortex-console)
 [![StyleCI](https://styleci.io/repos/99706187/shield)](https://styleci.io/repos/99706187)
 [![License](https://img.shields.io/packagist/l/cortex/console.svg?label=License&style=flat-square)](https://github.com/rinvex/cortex-console/blob/develop/LICENSE)
@@ -13,6 +12,25 @@
 ## Installation and Usage
 
 This is a **[Rinvex Cortex](https://github.com/rinvex/cortex)** module, that's still not yet documented, but you can use it on your own responsibility.
+
+In project composer.json require the package:
+```
+    composer require cortex/console
+```
+
+npm install codemirror --save-dev
+npm install jquery.terminal --save-dev
+
+Inside webpack.mix.js, add the following line to `scanForCssSelectors` array:
+```
+    path.join(__dirname, 'node_modules/jquery.terminal/**/*.js'),
+```
+
+Inside webpack.mix.js add the following lines to the pipeline:
+```
+    mix.sass('app/cortex/console/resources/sass/terminal.scss', 'public/css/terminal.css');
+    mix.js('app/cortex/console/resources/js/terminal.js', 'public/js/terminal.js');
+```
 
 To be documented soon..!
 

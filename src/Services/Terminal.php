@@ -32,6 +32,8 @@ class Terminal extends ConsoleApplication
      * @param array                                             $parameters
      * @param \Symfony\Component\Console\Output\OutputInterface $outputBuffer
      *
+     * @throws \Exception
+     *
      * @return int
      */
     public function call($command, array $parameters = [], $outputBuffer = null): int
