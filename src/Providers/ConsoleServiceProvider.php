@@ -7,6 +7,7 @@ namespace Cortex\Console\Providers;
 use Cortex\Console\Services\Terminal;
 use Cortex\Console\Console\Commands\Vi;
 use Illuminate\Support\ServiceProvider;
+use Rinvex\Support\Traits\ConsoleTools;
 use Cortex\Console\Console\Commands\Find;
 use Cortex\Console\Console\Commands\Tail;
 use Cortex\Console\Console\Commands\Mysql;
@@ -19,6 +20,8 @@ use Cortex\Console\Console\Commands\PublishCommand;
 
 class ConsoleServiceProvider extends ServiceProvider
 {
+    use ConsoleTools;
+
     /**
      * The commands to be registered.
      *
@@ -42,7 +45,7 @@ class ConsoleServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Register console commands
-        ! $this->app->runningInConsole() || $this->registerCommands();
+        ! $this->app->runningInConsole() || $this->registersCommands();
 
         $this->app->singleton(Terminal::class, function ($app) {
             $_SERVER['PHP_SELF'] = 'artisan'; // Fix (index.php => artisan)
@@ -85,32 +88,7 @@ class ConsoleServiceProvider extends ServiceProvider
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishResources();
-    }
-
-    /**
-     * Publish resources.
-     *
-     * @return void
-     */
-    protected function publishResources(): void
-    {
-        $this->publishes([realpath(__DIR__.'/../../resources/lang') => resource_path('lang/vendor/cortex/console')], 'cortex-console-lang');
-        $this->publishes([realpath(__DIR__.'/../../resources/views') => resource_path('views/vendor/cortex/console')], 'cortex-console-views');
-    }
-
-    /**
-     * Register console commands.
-     *
-     * @return void
-     */
-    protected function registerCommands(): void
-    {
-        // Register artisan commands
-        foreach ($this->commands as $key => $value) {
-            $this->app->singleton($value, $key);
-        }
-
-        $this->commands(array_values($this->commands));
+        ! $this->app->runningInConsole() || $this->publishesLang('cortex/console');
+        ! $this->app->runningInConsole() || $this->publishesViews('cortex/console');
     }
 }
