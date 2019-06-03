@@ -88,7 +88,7 @@ class ConsoleServiceProvider extends ServiceProvider
         });
 
         // Publish Resources
-        ! $this->app->runningInConsole() || $this->publishesLang('cortex/console');
-        ! $this->app->runningInConsole() || $this->publishesViews('cortex/console');
+        ! $this->app->runningInConsole() || $this->publishesLang('cortex/console', true);
+        ! $this->app->runningInConsole() || $this->publishesViews('cortex/console', true);
     }
 }
