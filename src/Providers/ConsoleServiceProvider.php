@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cortex\Console\Providers;
 
 use Cortex\Console\Services\Terminal;
-use Cortex\Console\Console\Commands\Vi;
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Support\Traits\ConsoleTools;
 use Cortex\Console\Console\Commands\Find;
@@ -62,7 +61,6 @@ class ConsoleServiceProvider extends ServiceProvider
                 Composer::class,
                 Mysql::class,
                 Tail::class,
-                Vi::class,
             ];
 
             Terminal::starting(function ($artisan) use ($commands) {

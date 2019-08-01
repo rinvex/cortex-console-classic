@@ -6,7 +6,6 @@ let Default = require('./commands/default');
 let Help = require('./commands/help');
 let Mysql = require('./commands/mysql');
 let Tinker = require('./commands/tinker');
-let Vi = require('./commands/vi');
 
 class Terminal {
     constructor(element, options = {}) {
@@ -38,7 +37,6 @@ class Terminal {
                     new Composer(this, options),
                     new Mysql(this, options),
                     new Tinker(this, options),
-                    new Vi(this, options),
                     new Default(this, options),
                 ];
                 this.run('list');
