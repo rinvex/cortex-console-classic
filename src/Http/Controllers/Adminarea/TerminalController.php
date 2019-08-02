@@ -22,6 +22,8 @@ class TerminalController extends AuthorizedController
      * @param \Illuminate\Http\Request          $request
      * @param \Cortex\Console\Services\Terminal $terminal
      *
+     * @throws \Exception
+     *
      * @return \Illuminate\View\View
      */
     public function index(Request $request, Terminal $terminal)
@@ -67,6 +69,8 @@ class TerminalController extends AuthorizedController
      * Process the form for store/update of the given resource.
      *
      * @param \Illuminate\Http\Request $request
+     *
+     * @throws \Exception
      *
      * @return \Illuminate\Http\JsonResponse
      */

@@ -38,8 +38,9 @@
     ],
     "require": {
         "php": "^7.2.0",
-        "composer/composer": "^1.5.0",
-        "cortex/foundation": "^2.1.0",
+        "ext-json": "*",
+        "composer/composer": "^1.8.0",
+        "cortex/foundation": "^2.2.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.2.0",
         "illuminate/console": "~5.8.0",
         "illuminate/database": "~5.8.0",
@@ -55,13 +56,13 @@
         "silber/bouncer": "v1.0.0-rc.5",
         "symfony/console": "^4.2.0",
         "yajra/laravel-datatables-buttons": "^4.6.0",
-        "yajra/laravel-datatables-fractal": "^1.4.0",
-        "yajra/laravel-datatables-html": "^4.4.0",
-        "yajra/laravel-datatables-oracle": "^9.3.0"
+        "yajra/laravel-datatables-fractal": "^1.5.0",
+        "yajra/laravel-datatables-html": "^4.5.0",
+        "yajra/laravel-datatables-oracle": "^9.4.0"
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.26.0",
-        "phpunit/phpunit": "^8.1.0"
+        "phpunit/phpunit": "^8.3.0"
     },
     "autoload": {
         "classmap": [

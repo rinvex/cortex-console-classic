@@ -18,7 +18,6 @@ In project composer.json require the package:
     composer require cortex/console
 ```
 
-npm install codemirror --save-dev
 npm install jquery.terminal --save-dev
 
 Inside webpack.mix.js, add the following line to `scanForCssSelectors` array:
