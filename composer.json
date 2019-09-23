@@ -48,6 +48,7 @@
         "illuminate/http": "^6.0.0",
         "illuminate/support": "^6.0.0",
         "laravel/framework": "^6.0.0",
+        "laravel/helpers": "^1.1.0",
         "laravelcollective/html": "^6.0.0",
         "proengsoft/laravel-jsvalidation": "^2.5.0",
         "rinvex/laravel-composer": "^3.0.0",
