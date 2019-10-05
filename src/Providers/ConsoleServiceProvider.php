@@ -10,6 +10,7 @@ use Rinvex\Support\Traits\ConsoleTools;
 use Cortex\Console\Console\Commands\Find;
 use Cortex\Console\Console\Commands\Tail;
 use Cortex\Console\Console\Commands\Mysql;
+use Illuminate\Contracts\Events\Dispatcher;
 use Cortex\Console\Console\Commands\Artisan;
 use Cortex\Console\Console\Commands\Composer;
 use Cortex\Console\Console\Commands\SeedCommand;
@@ -74,14 +75,14 @@ class ConsoleServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(): void
+    public function boot(Dispatcher $dispatcher): void
     {
         // Load resources
         $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/console');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/console');
-        $this->app->runningInConsole() || $this->app->afterResolving('blade.compiler', function () {
-            $accessarea = $this->app['request']->route('accessarea');
+
+        $this->app->runningInConsole() || $dispatcher->listen('controller.constructed', function ($accessarea) {
             ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
             ! file_exists($breadcrumbs = __DIR__."/../../routes/breadcrumbs/{$accessarea}.php") || require $breadcrumbs;
         });
