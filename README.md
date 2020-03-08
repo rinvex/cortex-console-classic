@@ -13,22 +13,9 @@
 
 This is a **[Rinvex Cortex](https://github.com/rinvex/cortex)** module, that's still not yet documented, but you can use it on your own responsibility.
 
-In project composer.json require the package:
+Require composer & npm dependencies:
 ```
     composer require cortex/console
-```
-
-npm install jquery.terminal --save-dev
-
-Inside webpack.mix.js, add the following line to `scanForCssSelectors` array:
-```
-    path.join(__dirname, 'node_modules/jquery.terminal/**/*.js'),
-```
-
-Inside webpack.mix.js add the following lines to the pipeline:
-```
-    mix.sass('app/cortex/console/resources/sass/terminal.scss', 'public/css/terminal.css');
-    mix.js('app/cortex/console/resources/js/terminal.js', 'public/js/terminal.js');
 ```
 
 To be documented soon..!
