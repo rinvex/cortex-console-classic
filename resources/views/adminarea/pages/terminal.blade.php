@@ -11,11 +11,11 @@
 @endpush
 
 @push('styles')
-    <link href="{{ mix('css/terminal.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/cortex-console.css') }}" rel="stylesheet">
 @endpush
 
 @push('vendor-scripts')
-    <script src="{{ mix('js/terminal.js') }}" defer></script>
+    <script src="{{ mix('js/cortex-console.js') }}" defer></script>
 @endpush
 
 @push('inline-scripts')

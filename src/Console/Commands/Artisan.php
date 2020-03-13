@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cortex\Console\Console\Commands;
 
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -85,8 +86,8 @@ class Artisan extends Command
     protected function forceCommand($command): string
     {
         return (
-            starts_with($command, 'migrate') === true && starts_with($command, 'migrate:status') === false ||
-            starts_with($command, 'db:seed') === true
+            (Str::startsWith($command, 'migrate') === true && Str::startsWith($command, 'migrate:status') === false) ||
+            Str::startsWith($command, 'db:seed') === true
         ) && mb_strpos('command', '--force') === false ?
             $command .= ' --force' : $command;
     }
