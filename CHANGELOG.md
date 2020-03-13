@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
 
+## [v3.0.4] - 2020-03-13
+- Tweak TravisCI config
+- Tweak service provider `publishesResources`
+- Refactor module webpack requirements
+- Update StyleCI config
+- Drop using global helpers
+- Check if ability exists before seeding
+
 ## [v3.0.3] - 2019-10-14
 - Update menus & breadcrumbs event listener to accessarea.ready
 - Fix wrong dependencies letter case
