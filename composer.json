@@ -50,7 +50,7 @@
         "laravel/framework": "^7.0.0",
         "laravel/helpers": "^1.2.0",
         "laravelcollective/html": "^6.1.0",
-        "proengsoft/laravel-jsvalidation": "^2.5.0",
+        "proengsoft/laravel-jsvalidation": "^3.0.0",
         "rinvex/laravel-composer": "^4.0.0",
         "rinvex/laravel-menus": "^4.0.0",
         "rinvex/laravel-support": "^4.0.0",
