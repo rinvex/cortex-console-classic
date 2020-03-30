@@ -5,6 +5,7 @@ module.exports = {
     whitelistPatterns: [],
     webpackPlugins: [],
     install: ['jquery.terminal'],
+    copy: [],
     mix: {
         css: [
             {input: 'app/cortex/console/resources/sass/module.scss', output: 'public/css/cortex-console.css'},
