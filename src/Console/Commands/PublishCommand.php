@@ -13,7 +13,7 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cortex:publish:console {--f|force : Overwrite any existing files.} {--r|resource=all}';
+    protected $signature = 'cortex:publish:console {--f|force : Overwrite any existing files.} {--r|resource=* : Specify which resources to publish.}';
 
     /**
      * The console command description.
@@ -31,18 +31,9 @@ class PublishCommand extends Command
     {
         $this->alert($this->description);
 
-        switch ($this->option('resource')) {
-            case 'lang':
-                $this->call('vendor:publish', ['--tag' => 'cortex/console::lang', '--force' => $this->option('force')]);
-                break;
-            case 'views':
-                $this->call('vendor:publish', ['--tag' => 'cortex/console::views', '--force' => $this->option('force')]);
-                break;
-            default:
-                $this->call('vendor:publish', ['--tag' => 'cortex/console::lang', '--force' => $this->option('force')]);
-                $this->call('vendor:publish', ['--tag' => 'cortex/console::views', '--force' => $this->option('force')]);
-                break;
-        }
+        collect($this->option('resource') ?: ['lang', 'views'])->each(function ($resource) {
+            $this->call('vendor:publish', ['--tag' => "cortex/console::{$resource}", '--force' => $this->option('force')]);
+        });
 
         $this->line('');
     }
