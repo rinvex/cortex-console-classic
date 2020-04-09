@@ -31,7 +31,7 @@ class PublishCommand extends Command
     {
         $this->alert($this->description);
 
-        collect($this->option('resource'))->each(function ($resource) {
+        collect($this->option('resource') ?: ['lang', 'views'])->each(function ($resource) {
             $this->call('vendor:publish', ['--tag' => "cortex/console::{$resource}", '--force' => $this->option('force')]);
         });
 
