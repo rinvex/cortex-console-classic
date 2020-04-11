@@ -45,7 +45,7 @@ class ConsoleServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Register console commands
-        $this->registerCommands();
+        $this->registerCommands($this->commands);
 
         $this->app->singleton(Terminal::class, function ($app) {
             $_SERVER['PHP_SELF'] = 'artisan'; // Fix (index.php => artisan)
