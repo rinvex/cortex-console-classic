@@ -77,7 +77,6 @@ class ConsoleServiceProvider extends ServiceProvider
     public function boot(Dispatcher $dispatcher): void
     {
         // Load resources
-        $this->loadRoutesFrom(__DIR__.'/../../routes/web/adminarea.php');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/console');
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/console');
 
