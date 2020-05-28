@@ -19,16 +19,16 @@ class RoutesDataTable extends AbstractDataTable
         'create' => false,
         'import' => false,
 
-        'export' => true,
-        'print' => true,
-        'showSelected' => true,
-
         'reset' => true,
         'reload' => true,
+        'showSelected' => true,
+
+        'print' => true,
+        'export' => true,
 
         'bulkDelete' => false,
-        'bulkEnable' => false,
-        'bulkDisable' => false,
+        'bulkActivate' => false,
+        'bulkDeactivate' => false,
 
         'colvis' => true,
         'pageLength' => true,
