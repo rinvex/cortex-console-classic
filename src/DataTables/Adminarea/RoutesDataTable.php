@@ -11,9 +11,28 @@ use Illuminate\Support\Facades\Route as RouteFacade;
 class RoutesDataTable extends AbstractDataTable
 {
     /**
-     * {@inheritdoc}
+     * Set action buttons.
+     *
+     * @var mixed
      */
-    protected $createButton = false;
+    protected $buttons = [
+        'create' => false,
+        'import' => false,
+
+        'reset' => true,
+        'reload' => true,
+        'showSelected' => true,
+
+        'print' => true,
+        'export' => true,
+
+        'bulkDelete' => false,
+        'bulkActivate' => false,
+        'bulkDeactivate' => false,
+
+        'colvis' => true,
+        'pageLength' => true,
+    ];
 
     /**
      * Get the query object to be processed by dataTables.
