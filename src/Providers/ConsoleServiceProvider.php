@@ -68,25 +68,4 @@ class ConsoleServiceProvider extends ServiceProvider
             });
         }
     }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot(Dispatcher $dispatcher): void
-    {
-        // Load resources
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'cortex/console');
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'cortex/console');
-
-        $this->app->runningInConsole() || $dispatcher->listen('accessarea.ready', function ($accessarea) {
-            ! file_exists($menus = __DIR__."/../../routes/menus/{$accessarea}.php") || require $menus;
-            ! file_exists($breadcrumbs = __DIR__."/../../routes/breadcrumbs/{$accessarea}.php") || require $breadcrumbs;
-        });
-
-        // Publish Resources
-        $this->publishesLang('cortex/console', true);
-        $this->publishesViews('cortex/console', true);
-    }
 }
