@@ -10,7 +10,6 @@ use Rinvex\Support\Traits\ConsoleTools;
 use Cortex\Console\Console\Commands\Find;
 use Cortex\Console\Console\Commands\Tail;
 use Cortex\Console\Console\Commands\Mysql;
-use Illuminate\Contracts\Events\Dispatcher;
 use Cortex\Console\Console\Commands\Artisan;
 use Cortex\Console\Console\Commands\Composer;
 use Cortex\Console\Console\Commands\SeedCommand;
