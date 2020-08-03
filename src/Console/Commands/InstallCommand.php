@@ -33,5 +33,7 @@ class InstallCommand extends Command
 
         $this->call('cortex:publish:console', ['--force' => $this->option('force'), '--resource' => $this->option('resource')]);
         $this->call('cortex:seed:console');
+
+        $this->call('cortex:activate', ['--module' => 'cortex/console']);
     }
 }
