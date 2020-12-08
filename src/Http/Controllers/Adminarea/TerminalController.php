@@ -44,7 +44,7 @@ class TerminalController extends AuthorizedController
             'basePath' => app()->basePath(),
             'environment' => app()->environment(),
             'version' => app()->version(),
-            'endpoint' => route('adminarea.console.terminal.execute'),
+            'endpoint' => route('adminarea.cortex.console.terminal.execute'),
             'interpreters' => [
                 'mysql' => 'mysql',
                 'artisan tinker' => 'tinker',
