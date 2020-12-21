@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Cortex\Console\Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CortexConsoleSeeder extends Seeder
