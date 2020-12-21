@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator;
 
-Breadcrumbs::register('adminarea.cortex.console.terminal.index', function (BreadcrumbsGenerator $breadcrumbs) {
+Breadcrumbs::register('adminarea.cortex.console.terminal.index', function (Generator $breadcrumbs) {
     $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.config('app.name'), route('adminarea.home'));
     $breadcrumbs->push(trans('cortex/console::common.terminal'), route('adminarea.cortex.console.terminal.index'));
 });
 
-Breadcrumbs::register('adminarea.cortex.console.routes.index', function (BreadcrumbsGenerator $breadcrumbs) {
+Breadcrumbs::register('adminarea.cortex.console.routes.index', function (Generator $breadcrumbs) {
     $breadcrumbs->push('<i class="fa fa-dashboard"></i> '.config('app.name'), route('adminarea.home'));
     $breadcrumbs->push(trans('cortex/console::common.routes'), route('adminarea.cortex.console.routes.index'));
 });
