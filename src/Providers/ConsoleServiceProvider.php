@@ -13,9 +13,13 @@ use Cortex\Console\Console\Commands\Mysql;
 use Cortex\Console\Console\Commands\Artisan;
 use Cortex\Console\Console\Commands\Composer;
 use Cortex\Console\Console\Commands\SeedCommand;
+use Cortex\Console\Console\Commands\UnloadCommand;
 use Cortex\Console\Console\Commands\ArtisanTinker;
 use Cortex\Console\Console\Commands\InstallCommand;
 use Cortex\Console\Console\Commands\PublishCommand;
+use Cortex\Console\Console\Commands\ActivateCommand;
+use Cortex\Console\Console\Commands\AutoloadCommand;
+use Cortex\Console\Console\Commands\DeactivateCommand;
 
 class ConsoleServiceProvider extends ServiceProvider
 {
@@ -27,6 +31,11 @@ class ConsoleServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
+        ActivateCommand::class => 'command.cortex.console.activate',
+        DeactivateCommand::class => 'command.cortex.console.deactivate',
+        AutoloadCommand::class => 'command.cortex.console.autoload',
+        UnloadCommand::class => 'command.cortex.console.unload',
+
         SeedCommand::class => 'command.cortex.console.seed',
         PublishCommand::class => 'command.cortex.console.publish',
         InstallCommand::class => 'command.cortex.console.install',
