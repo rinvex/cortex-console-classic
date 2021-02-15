@@ -76,11 +76,11 @@ class TerminalController extends AuthorizedController
      */
     public function execute(Terminal $terminal, Request $request)
     {
-        $error = $terminal->call($request->get('command'));
+        $error = $terminal->call($request->input('command'));
 
         return response()->json([
-            'jsonrpc' => $request->get('jsonrpc'),
-            'id' => $request->get('id'),
+            'jsonrpc' => $request->input('jsonrpc'),
+            'id' => $request->input('id'),
             'result' => $terminal->output(),
             'error' => $error,
         ]);
