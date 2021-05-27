@@ -1,5 +1,8 @@
 # Cortex Console
 
+This package is NOT actively maintained! Want to jump in as a maintainer? Ping me [@omranic](https://twitter.com/omranic)
+
+
 **Cortex Console** is a set of powerful tools for administrators and system support staff, to maintain the project through a web console.
 
 [![Packagist](https://img.shields.io/packagist/v/cortex/console.svg?label=Packagist&style=flat-square)](https://packagist.org/packages/cortex/console)
